@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Products</h1>
+<input id="productInput" placeholder="Add product">
+<button onclick="addProduct()">Add</button>
+
+<div id="productList"></div>
+
+<hr>
+
+<h2 id="currentProduct"></h2>
+<button onclick="showAddForm()">Add Account</button>
+
+<div id="accountList"></div>
+
+<div id="form" style="display:none;">
+  <h3>Add Account</h3>
+
+  <input id="email" placeholder="Email"><br>
+  <input id="password" placeholder="Password"><br>
+
+  <select id="type">
+    <option>Trial</option>
+    <option>Hitter</option>
+    <option>Purchased</option>
+  </select><br>
+
+  <input id="duration" type="number" placeholder="Duration">
+  <select id="durationType">
+    <option value="days">Days</option>
+    <option value="weeks">Weeks</option>
+    <option value="months">Months</option>
+  </select><br>
+
+  <select id="statusTag">
+    <option>Using</option>
+    <option>Sold</option>
+    <option>Free</option>
+  </select><br>
+
+  <textarea id="note" placeholder="Note"></textarea><br>
+
+  <button onclick="addAccount()">Save</button>
+</div>
+
+<button onclick="exportData()">Export</button>
+
+<script src="app.js"></script>
+</body>
+</html>
