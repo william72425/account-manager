@@ -1,35 +1,49 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui;
   background: #0f172a;
   color: white;
 }
 
-h1, h2 {
-  margin: 10px 0;
+.app {
+  padding: 15px;
+}
+
+.topbar {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
 }
 
 input, select, textarea {
   width: 100%;
   padding: 12px;
   margin-top: 8px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   background: #1e293b;
   color: white;
 }
 
 button {
-  padding: 10px 15px;
-  border: none;
+  padding: 10px;
   border-radius: 10px;
-  background: #3b82f6;
+  border: none;
+  background: #334155;
   color: white;
-  margin-top: 10px;
 }
 
-.container {
-  padding: 15px;
+button.primary {
+  background: #3b82f6;
 }
 
 .card {
@@ -40,28 +54,40 @@ button {
 }
 
 .tag {
-  display: inline-block;
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 20px;
   font-size: 12px;
-  margin-top: 5px;
 }
 
-.tag.using { background: #22c55e; }
-.tag.sold { background: #ef4444; }
-.tag.free { background: #eab308; }
+.using { background: #22c55e; }
+.sold { background: #ef4444; }
+.free { background: #eab308; }
 
-.header {
-  font-size: 22px;
-  font-weight: bold;
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
-.product-btn {
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: #1e293b;
-  padding: 12px;
-  border-radius: 12px;
-  margin-top: 8px;
+.modal {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.7);
+  display:none;
+}
+
+.modal-content {
+  background:#1e293b;
+  padding:20px;
+  border-radius:15px;
+  margin:50px 15px;
+}
+
+.export {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background:#22c55e;
 }
