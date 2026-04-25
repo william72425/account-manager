@@ -1,34 +1,51 @@
 body{
-  font-family: system-ui;
+  margin:0;
+  font-family:system-ui;
   background:#0f172a;
   color:white;
-  padding:10px;
+}
+
+.app{
+  padding:15px;
+}
+
+.row{
+  display:flex;
+  gap:10px;
 }
 
 input,select,textarea{
   width:100%;
+  padding:12px;
   margin-top:8px;
-  padding:10px;
-  border-radius:10px;
+  border-radius:12px;
   border:none;
   background:#1e293b;
   color:white;
 }
 
 button{
-  margin-top:10px;
   padding:10px;
   border:none;
-  border-radius:10px;
-  background:#3b82f6;
+  border-radius:12px;
+  background:#334155;
   color:white;
+  margin-top:10px;
 }
+
+.primary{ background:#3b82f6; }
 
 .card{
   background:#1e293b;
-  padding:10px;
-  border-radius:10px;
+  padding:15px;
+  border-radius:15px;
   margin-top:10px;
+}
+
+.dashboard{
+  display:flex;
+  justify-content:space-between;
+  margin:10px 0;
 }
 
 .modal{
@@ -39,18 +56,15 @@ button{
   display:none;
 }
 
-.modal-content{
+.modal-box{
   background:#1e293b;
   padding:15px;
+  border-radius:15px;
   margin:20px;
-  border-radius:10px;
 }
 
-.row{
-  display:flex;
-  gap:10px;
-}
-
-.dashboard{
-  margin:10px 0;
+.tag{
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:12px;
 }
