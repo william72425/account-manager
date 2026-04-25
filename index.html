@@ -11,8 +11,10 @@
 
 <h1>Products</h1>
 
-<input id="productInput" placeholder="Add Product">
+<div class="row">
+<input id="productInput" placeholder="New product">
 <button onclick="addProduct()">Add</button>
+</div>
 
 <div id="productList"></div>
 
@@ -21,26 +23,28 @@
 <h2 id="currentProduct"></h2>
 
 <div class="dashboard">
-  Total: <span id="total"></span> |
-  Active: <span id="active"></span> |
-  Expired: <span id="expired"></span>
+<span>Total: <b id="total">0</b></span>
+<span>Active: <b id="active">0</b></span>
+<span>Expired: <b id="expired">0</b></span>
 </div>
 
-<button onclick="toggleForm()">+ Add Account</button>
+<button class="primary" onclick="openForm()">+ Add Account</button>
 
 <div id="accountList"></div>
 
-<!-- FORM -->
-<div id="form" class="modal">
-<div class="modal-content">
+</div>
 
-<h3>Add Account</h3>
+<!-- FORM MODAL -->
+<div id="formModal" class="modal">
+<div class="modal-box">
 
-<input id="subName" placeholder="Subscription name (Pro, Premium)">
+<h3 id="formTitle">Add Account</h3>
+
+<input id="subName" placeholder="Subscription name">
 <select id="subStatus">
-  <option>claimed</option>
-  <option>failed</option>
-  <option>retry</option>
+<option>claimed</option>
+<option>failed</option>
+<option>retry</option>
 </select>
 
 <input id="claimedDate" type="date">
@@ -75,16 +79,17 @@
 
 <textarea id="note" placeholder="Note"></textarea>
 
-<button onclick="addAccount()">Save</button>
-<button onclick="toggleForm()">Cancel</button>
+<button class="primary" onclick="saveAccount()">Save</button>
+<button onclick="closeForm()">Cancel</button>
 
 </div>
 </div>
 
-<button onclick="exportData()">Export</button>
-
+<!-- DETAIL MODAL -->
+<div id="detailModal" class="modal">
+<div class="modal-box" id="detailContent"></div>
 </div>
 
 <script src="app.js"></script>
 </body>
-  </html>
+</html>
