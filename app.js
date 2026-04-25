@@ -19,55 +19,54 @@ function renderProducts() {
   list.innerHTML = "";
 
   Object.keys(data).forEach(p => {
-    let btn = document.createElement("button");
-    btn.innerText = p;
-    btn.onclick = () => openProduct(p);
-    list.appendChild(btn);
+    let div = document.createElement("div");
+    div.className = "card";
+    div.innerText = p;
+    div.onclick = () => openProduct(p);
+    list.appendChild(div);
   });
 }
 
 function openProduct(name) {
   currentProduct = name;
+  document.getElementById("productView").style.display = "block";
   document.getElementById("currentProduct").innerText = name;
   renderAccounts();
 }
 
-function showAddForm() {
-  document.getElementById("form").style.display = "block";
+function toggleForm() {
+  let f = document.getElementById("form");
+  f.style.display = f.style.display === "block" ? "none" : "block";
 }
 
 function addAccount() {
   let email = document.getElementById("email").value;
 
-  // Duplicate check
   if (data[currentProduct].some(a => a.email === email)) {
     alert("Already used for this product");
     return;
   }
 
-  let password = document.getElementById("password").value;
   let duration = parseInt(document.getElementById("duration").value);
-  let durationType = document.getElementById("durationType").value;
+  let type = document.getElementById("durationType").value;
 
   let now = new Date();
   let expire = new Date();
 
-  if (durationType === "days") expire.setDate(now.getDate() + duration);
-  if (durationType === "weeks") expire.setDate(now.getDate() + duration * 7);
-  if (durationType === "months") expire.setMonth(now.getMonth() + duration);
+  if (type === "days") expire.setDate(now.getDate() + duration);
+  if (type === "weeks") expire.setDate(now.getDate() + duration * 7);
+  if (type === "months") expire.setMonth(now.getMonth() + duration);
 
-  let account = {
+  let acc = {
     email,
-    password,
-    type: document.getElementById("type").value,
+    password: document.getElementById("password").value,
     statusTag: document.getElementById("statusTag").value,
-    note: document.getElementById("note").value,
-    added: now,
-    expire: expire
+    expire
   };
 
-  data[currentProduct].push(account);
+  data[currentProduct].push(acc);
   save();
+  toggleForm();
   renderAccounts();
 }
 
@@ -75,38 +74,45 @@ function renderAccounts() {
   let list = document.getElementById("accountList");
   list.innerHTML = "";
 
-  data[currentProduct].forEach((a, i) => {
+  let total = 0, active = 0, expired = 0;
+
+  data[currentProduct].forEach((a,i)=>{
+    total++;
+
     let now = new Date();
-    let expire = new Date(a.expire);
-    let daysLeft = Math.ceil((expire - now) / (1000 * 60 * 60 * 24));
+    let exp = new Date(a.expire);
+    let days = Math.ceil((exp-now)/(1000*60*60*24));
+
+    if(days > 0) active++; else expired++;
 
     let div = document.createElement("div");
     div.className = "card";
 
     div.innerHTML = `
       <b>#${i+1}</b><br>
-      ${a.email} 
-      <button onclick="copy('${a.email}')">Copy</button><br>
-      ${a.password}
-      <button onclick="copy('${a.password}')">Copy</button><br>
-      Days Left: ${daysLeft}<br>
-      Status: ${a.statusTag}
+      ${a.email} <button onclick="copy('${a.email}')">📋</button><br>
+      ${a.password} <button onclick="copy('${a.password}')">📋</button><br>
+      ⏳ ${days} days left<br>
+      <span class="tag ${a.statusTag.toLowerCase()}">${a.statusTag}</span>
     `;
 
     list.appendChild(div);
   });
+
+  document.getElementById("total").innerText = total;
+  document.getElementById("active").innerText = active;
+  document.getElementById("expired").innerText = expired;
 }
 
-function copy(text) {
+function copy(text){
   navigator.clipboard.writeText(text);
-  alert("Copied!");
 }
 
-function exportData() {
-  let blob = new Blob([JSON.stringify(data)], {type:"application/json"});
+function exportData(){
+  let blob = new Blob([JSON.stringify(data)],{type:"application/json"});
   let a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "accounts.json";
+  a.download = "backup.json";
   a.click();
 }
 
