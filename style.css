@@ -1,11 +1,67 @@
 body {
-  font-family: Arial;
-  padding: 10px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+h1, h2 {
+  margin: 10px 0;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: none;
+  background: #1e293b;
+  color: white;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+  margin-top: 10px;
+}
+
+.container {
+  padding: 15px;
 }
 
 .card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 10px;
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.tag.using { background: #22c55e; }
+.tag.sold { background: #ef4444; }
+.tag.free { background: #eab308; }
+
+.header {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.product-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #1e293b;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 8px;
 }
