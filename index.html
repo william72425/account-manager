@@ -1,88 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Account Manager</title>
-  <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Manager</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="app">
-
   <div class="topbar">Account Manager</div>
 
-  <!-- Product Section -->
-  <div class="section">
-    <div class="row">
-      <input id="productInput" placeholder="New product">
-      <button onclick="addProduct()">Add</button>
-    </div>
+  <input id="productInput" placeholder="New product">
+  <button onclick="addProduct()">Add</button>
 
-    <div id="productList"></div>
+  <div id="productList"></div>
+
+  <h2 id="currentProduct"></h2>
+
+  <button onclick="toggleForm()">Add Account</button>
+
+  <div id="accountList"></div>
+
+  <div id="form" style="display:none;">
+    <input id="email" placeholder="Email">
+    <input id="password" placeholder="Password">
+
+    <input id="duration" type="number" placeholder="Duration">
+
+    <select id="durationType">
+      <option value="days">Days</option>
+      <option value="weeks">Weeks</option>
+      <option value="months">Months</option>
+    </select>
+
+    <select id="statusTag">
+      <option>Using</option>
+      <option>Sold</option>
+      <option>Free</option>
+    </select>
+
+    <button onclick="addAccount()">Save</button>
   </div>
-
-  <!-- Product View -->
-  <div id="productView" style="display:none;">
-
-    <div class="section">
-      <h2 id="currentProduct"></h2>
-
-      <div class="dashboard">
-        <div>Total: <span id="total"></span></div>
-        <div>Active: <span id="active"></span></div>
-        <div>Expired: <span id="expired"></span></div>
-      </div>
-
-      <button class="primary" onclick="toggleForm()">+ Add Account</button>
-    </div>
-
-    <!-- Account List -->
-    <div id="accountList"></div>
-
-  </div>
-
-  <!-- Form -->
-  <div id="form" class="modal">
-    <div class="modal-content">
-
-      <h3>Add Account</h3>
-
-      <input id="email" placeholder="Email">
-      <input id="password" type="password" placeholder="Password">
-
-      <select id="type">
-        <option>Trial</option>
-        <option>Hitter</option>
-        <option>Purchased</option>
-      </select>
-
-      <div class="row">
-        <input id="duration" type="number" placeholder="Duration">
-        <select id="durationType">
-          <option value="days">Days</option>
-          <option value="weeks">Weeks</option>
-          <option value="months">Months</option>
-        </select>
-      </div>
-
-      <select id="statusTag">
-        <option>Using</option>
-        <option>Sold</option>
-        <option>Free</option>
-      </select>
-
-      <textarea id="note" placeholder="Note"></textarea>
-
-      <button class="primary" onclick="addAccount()">Save</button>
-      <button onclick="toggleForm()">Cancel</button>
-
-    </div>
-  </div>
-
-  <button class="export" onclick="exportData()">Export Backup</button>
 
 </div>
 
 <script src="app.js"></script>
+
 </body>
 </html>
