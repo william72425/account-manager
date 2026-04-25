@@ -2,50 +2,89 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Account Manager</title>
+<title>Account Manager Pro</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
 <div class="app">
-  <div class="topbar">Account Manager</div>
 
-  <input id="productInput" placeholder="New product">
-  <button onclick="addProduct()">Add</button>
+<h1>Products</h1>
 
-  <div id="productList"></div>
+<input id="productInput" placeholder="Add Product">
+<button onclick="addProduct()">Add</button>
 
-  <h2 id="currentProduct"></h2>
+<div id="productList"></div>
 
-  <button onclick="toggleForm()">Add Account</button>
+<hr>
 
-  <div id="accountList"></div>
+<h2 id="currentProduct"></h2>
 
-  <div id="form" style="display:none;">
-    <input id="email" placeholder="Email">
-    <input id="password" placeholder="Password">
+<div class="dashboard">
+  Total: <span id="total"></span> |
+  Active: <span id="active"></span> |
+  Expired: <span id="expired"></span>
+</div>
 
-    <input id="duration" type="number" placeholder="Duration">
+<button onclick="toggleForm()">+ Add Account</button>
 
-    <select id="durationType">
-      <option value="days">Days</option>
-      <option value="weeks">Weeks</option>
-      <option value="months">Months</option>
-    </select>
+<div id="accountList"></div>
 
-    <select id="statusTag">
-      <option>Using</option>
-      <option>Sold</option>
-      <option>Free</option>
-    </select>
+<!-- FORM -->
+<div id="form" class="modal">
+<div class="modal-content">
 
-    <button onclick="addAccount()">Save</button>
-  </div>
+<h3>Add Account</h3>
+
+<input id="subName" placeholder="Subscription name (Pro, Premium)">
+<select id="subStatus">
+  <option>claimed</option>
+  <option>failed</option>
+  <option>retry</option>
+</select>
+
+<input id="claimedDate" type="date">
+
+<div class="row">
+<input id="duration" type="number" placeholder="Duration">
+<select id="durationType">
+<option value="days">Days</option>
+<option value="weeks">Weeks</option>
+<option value="months">Months</option>
+</select>
+</div>
+
+<hr>
+
+<input id="username" placeholder="Username">
+<input id="email" placeholder="Email">
+<input id="password" placeholder="Password">
+
+<select id="type">
+<option>trial</option>
+<option>hitter</option>
+<option>purchased</option>
+</select>
+
+<select id="statusTag">
+<option>using</option>
+<option>sold</option>
+<option>free</option>
+<option>gave</option>
+</select>
+
+<textarea id="note" placeholder="Note"></textarea>
+
+<button onclick="addAccount()">Save</button>
+<button onclick="toggleForm()">Cancel</button>
+
+</div>
+</div>
+
+<button onclick="exportData()">Export</button>
 
 </div>
 
 <script src="app.js"></script>
-
 </body>
-</html>
+  </html>
